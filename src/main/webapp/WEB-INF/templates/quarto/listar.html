@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Hotel</title>
+	
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	
+</head>
+<body>
+<h1>Quartos</h1>
+
+<table>
+	<tr>
+		<th>Numero</th>
+		<th>Descrição</th>
+		<th>Nota</th>
+		<th>Capacidade</th>	
+		<th>Valor</th>
+	</tr>
+	
+	<tr th:each="quarto: ${quartos}">
+		<td th:text="${quarto.id}">1</td>
+		<td th:text="${quarto.descricao}"></td>
+		<td th:text="${quarto.nota}"></td>
+		<td th:text="${quarto.capacidade}"></td>
+		<td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+
+
+
