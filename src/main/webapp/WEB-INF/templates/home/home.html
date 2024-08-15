@@ -7,27 +7,28 @@
     <title>Home Hotel Alvorada</title>
 </head>
 <body>
-    <form action="/quarto/listar" method="post"></form>
-    <h1>Seja bem vindo ao Alvorada</h1>
-    <h2>Aqui voce encontra o conforto que precisa</h2>
+    <form method="post" action="quarto/listar">
+        <h1>Seja bem vindo ao Alvorada</h1>
+        <h2>Aqui voce encontra o conforto que precisa</h2>
 
-    <label for="entrada">Data entrada: </label>
-    <input type="text" name="entrada" id="entrada" required>
+        <label for="entrada">Data entrada: </label>
+        <input type="text" name="entrada" id="entrada" required>
 
-    <label for="saida">Data entrada: </label>
-    <input type="text" name="saida" id="saida" required><br><br>
+        <label for="saida">Data saida: </label>
+        <input type="text" name="saida" id="saida" required><br><br>
 
-    <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
-    
-    <label for="cap_um">Máximo uma pessoa:</label>
-    <input type="radio" name="capacidade" value="max_um"><br>
+        <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
+        
+        <label for="cap_um">Máximo uma pessoa:</label>
+        <input type="radio"  id="capacidade" name="capacidade" value="1"><br>
 
-    <label for="cap_dois">Máximo duas pessoas:</label>
-    <input type="radio" name="capacidade" value="max_dois"><br>
+        <label for="cap_dois">Máximo duas pessoas:</label>
+        <input type="radio" id="capacidade" name="capacidade" value="2"><br>
 
-    <label for="cap_tres">Máximo cinco pessoas:</label>
-    <input type="radio" name="capacidade" value="max_cinco" ><br><br>
-    
-    <button type="submit">Buscar</button>
+        <label for="cap_tres">Máximo cinco pessoas:</label>
+        <input type="radio" id="capacidade" name="capacidade" value="5" ><br><br>
+        
+        <button type="submit">Buscar</button>
+    </form>
 </body>
 </html>

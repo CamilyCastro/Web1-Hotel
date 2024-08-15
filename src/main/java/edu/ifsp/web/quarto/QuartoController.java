@@ -45,7 +45,15 @@ public class QuartoController extends HttpServlet {
             path = "/";
         }
         Command command = commandMap.get("/quarto" + path); // Adiciona "/quarto" ao caminho
+        
+        //debug command
+        if(command instanceof ListarQuartos) {
+            System.out.println("Eh instancia de ListarQuartos");
+        } else {
+        	System.out.println("Nao eh istancia de ListarQuartos");
+        }
 
+        
         if (command != null) {
             command.execute(request, response); // Executa o comando associado à requisição
         } else {

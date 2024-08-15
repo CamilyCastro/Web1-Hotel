@@ -17,7 +17,10 @@ public class ListarQuartos implements Command{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		QuartosDAO dao = new QuartosDAO();
 		List<Quarto> quartos;
-		quartos = dao.listar("16/08/2024", 1);
+		
+		int capacidade = Integer.parseInt(request.getParameter("capacidade"));
+		
+		quartos = dao.listar(request.getParameter("entrada"), capacidade);
 		request.setAttribute("quartos", quartos);
 		Template.render("quarto/listar", request, response);		
 	}
