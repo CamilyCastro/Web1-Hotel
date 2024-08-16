@@ -40,6 +40,4 @@ public class Quarto {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
 }

@@ -7,13 +7,12 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.ifsp.modelo.Quarto;
 
 public class QuartosDAO {
 	
-	public List<Quarto> listar(String entrada, int capacidade) throws PersistenceException, ParseException {	
-		List<Quarto> quartos = new ArrayList();
+	public List<Quarto> filtrar(String entrada, int capacidade) throws PersistenceException, ParseException {	
+		List<Quarto> quartos = new ArrayList<Quarto>();
 		
 		try (Connection conn = DatabaseConnector.getConnection()) {	
 
@@ -45,6 +44,32 @@ public class QuartosDAO {
 		}
 
 		return quartos;
+	}
+	
+	public Quarto listarFavoritados(int idQuarto) throws PersistenceException, ParseException, SQLException {	
+		Quarto quarto = new Quarto();
+		try (Connection conn = DatabaseConnector.getConnection()) {	
+			
+			String query = "SELECT id, descricao, nota, capacidade, valor FROM quartos WHERE id = ?";
+                    
+		     try (PreparedStatement ps = conn.prepareStatement(query)) {
+		         ps.setInt(1, idQuarto);
+		              
+		         try (ResultSet rs = ps.executeQuery()) {
+		             while (rs.next()) {
+		                 quarto.setId(rs.getInt("id"));
+		                 quarto.setDescricao(rs.getString("descricao"));
+		                 quarto.setNota(rs.getInt("nota"));
+		                 quarto.setCapacidade(rs.getInt("capacidade"));
+		                 quarto.setValor(rs.getDouble("valor"));
+		             }
+				} catch (SQLException e) {
+					throw new PersistenceException(e);			
+				}
+		
+		         return quarto;
+		     }
+		}
 	}
 }
 

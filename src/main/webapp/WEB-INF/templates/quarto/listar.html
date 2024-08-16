@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-	<meta charset="UTF-8">
-	<title>Hotel</title>
-	
-	<link rel="stylesheet" th:href="@{/css/common.css}">
-	
+    <meta charset="UTF-8">
+    <title>Hotel</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <style>
+        .mensagem-sucesso {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-<h1>Quartos</h1>
 
-<table>
-	<tr>
-		<th>Numero</th>
-		<th>Descrição</th>
-		<th>Nota</th>
-		<th>Capacidade</th>	
-		<th>Valor</th>
-	</tr>
-	
-	<tr th:each="quarto: ${quartos}">
-		<td th:text="${quarto.id}">1</td>
-		<td th:text="${quarto.descricao}"></td>
-		<td th:text="${quarto.nota}"></td>
-		<td th:text="${quarto.capacidade}"></td>
-		<td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
-	</tr>
-</table>
+    <h1>Quartos</h1>
+
+    <div th:if="${session.favoritoMsg}">
+        <p th:text="${session.favoritoMsg}"></p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Número</th>
+            <th>Descrição</th>
+            <th>Nota</th>
+            <th>Capacidade</th>    
+            <th>Valor</th>
+        </tr>
+        
+        <tr th:each="quarto: ${quartos}">
+            <td th:text="${quarto.id}"></td>
+            <td th:text="${quarto.descricao}"></td>
+            <td th:text="${quarto.nota}"></td>
+            <td th:text="${quarto.capacidade}"></td>
+            <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
+            <td>
+                <span class="operacao"><a th:href="@{|/quarto/favoritar?quarto=${quarto.id}|}">Favoritar</a></span>
+            </td>
+        </tr>
+    </table>
 
 </body>
 </html>
-
-
-
-

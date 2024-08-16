@@ -1,8 +1,11 @@
 package edu.ifsp.web.quarto;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import edu.ifsp.modelo.Quarto;
 import edu.ifsp.persistencia.QuartosDAO;
 import edu.ifsp.web.Command;
@@ -19,9 +22,15 @@ public class ListarQuartos implements Command{
 		List<Quarto> quartos;
 		
 		int capacidade = Integer.parseInt(request.getParameter("capacidade"));
+		String entrada = request.getParameter("entrada");
 		
-		quartos = dao.listar(request.getParameter("entrada"), capacidade);
+		HttpSession session = request.getSession();
+        session.setAttribute("entrada", entrada);
+        session.setAttribute("capacidade", capacidade);
+		
+		quartos = dao.filtrar(entrada, capacidade);
 		request.setAttribute("quartos", quartos);
+	
 		Template.render("quarto/listar", request, response);		
 	}
 }
