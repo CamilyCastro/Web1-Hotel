@@ -28,14 +28,22 @@ public class FavoritarQuarto implements Command {
         int quartoId = Integer.parseInt(request.getParameter("quarto"));
         QuartosDAO dao = new QuartosDAO();
         Quarto quarto = dao.listarFavoritados(quartoId);
-
-        // Adicionando o quarto aos favoritos, se não estiver já adicionado
-        if (!favoritos.contains(quarto)) {
-            favoritos.add(quarto);
+        
+        boolean encontrado = false;
+        
+        for (Quarto q : favoritos) {
+            if (q.getId() == quarto.getId()) {
+                encontrado = true;
+                break; // Se já encontrou o quarto na lista, não precisa continuar verificando
+            }
         }
 
-        // Armazenando a mensagem de sucesso na sessão
-        session.setAttribute("favoritoMsg", "Quarto favoritado com sucesso.");
+        if (encontrado) {
+            session.setAttribute("favoritoMsg", "Quarto já está nos favoritos.");
+        } else {
+            favoritos.add(quarto);
+            session.setAttribute("favoritoMsg", "Quarto favoritado com sucesso.");
+        }
 
         // Recuperando a data de entrada e a capacidade da sessão
         String entrada = (String) session.getAttribute("entrada");

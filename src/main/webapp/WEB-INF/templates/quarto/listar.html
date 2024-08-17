@@ -22,6 +22,10 @@
     <div th:if="${session.favoritoMsg}">
         <p th:text="${session.favoritoMsg}"></p>
     </div>
+    
+    <p>
+    	<a th:href="@{/quarto/favoritos}">Ver quartos favoritados</a>	
+	</p>
 
     <table>
         <tr>

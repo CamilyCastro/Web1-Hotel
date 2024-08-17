@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Favoritos Alvorada</title>
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	
+</head>
+<body>
+	<h1>Seus quartos favoritos</h1>
+	
+	<table>
+        <tr>
+            <th>Número</th>
+            <th>Descrição</th>
+            <th>Nota</th>
+            <th>Capacidade</th>    
+            <th>Valor</th>
+        </tr>
+        
+        <tr th:each="quarto, stats: ${session.favoritos}">
+            <td th:text="${quarto.id}"></td>
+            <td th:text="${quarto.descricao}"></td>
+            <td th:text="${quarto.nota}"></td>
+            <td th:text="${quarto.capacidade}"></td>
+            <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
+            <td>
+                <span class="operacao"><a th:href="@{|/quarto/desfavoritar?quarto=${quarto.id}|}">Desfavoritar</a></span>
+            </td>
+        </tr>
+    </table>
+	
+	<ul>
+		<li><a th:href="@{/quarto/listar(entrada=${entrada}, capacidade=${capacidade})}">Voltar aos quartos disponíveis</a></li>
+	</ul>
+</body>
+</html>
