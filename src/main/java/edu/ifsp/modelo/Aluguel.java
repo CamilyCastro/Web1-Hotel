@@ -2,11 +2,18 @@ package edu.ifsp.modelo;
 
 public class Aluguel {
 	
+	int id;
 	String entrada;
 	String saida;
 	int idQuarto;
 	int idCliente;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getEntrada() {
 		return entrada;
 	}

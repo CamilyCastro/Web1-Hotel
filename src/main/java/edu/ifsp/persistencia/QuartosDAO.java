@@ -71,5 +71,46 @@ public class QuartosDAO {
 		     }
 		}
 	}
+	
+
+	public void updateNota(int nota, int idQuarto) throws PersistenceException, SQLException {
+	        String query = "UPDATE quartos SET nota = ? WHERE id = ?";
+
+	        try (Connection conn = DatabaseConnector.getConnection();
+	             PreparedStatement ps = conn.prepareStatement(query)) {
+
+	            ps.setInt(1, nota);
+	            ps.setInt(2, idQuarto);
+
+	            int affectedRows = ps.executeUpdate();
+	            if (affectedRows == 0) {
+	                throw new PersistenceException("Quarto encontrado com o ID: " + idQuarto);
+	            }
+
+	        } catch (SQLException e) {
+	        	throw new PersistenceException(e);	
+	        }
+	        
+	    	/**          TESTEE          **/
+	    	try (Connection conn = DatabaseConnector.getConnection()) {	
+	    		String query2 = "SELECT id, descricao, nota, capacidade, valor FROM quartos";      
+	    	     try (PreparedStatement ps = conn.prepareStatement(query2)) {
+	                
+	    	         try (ResultSet rs = ps.executeQuery()) {
+	    	             while (rs.next()) {
+	    	            	 System.out.println(
+	    	            			 "  ID QUARTO:" + rs.getInt("id")+
+	    	            			 "  NOTA:"  	+ rs.getInt("nota")+
+	    	            			 "  CAP:" 		+ rs.getInt("capacidade")+
+	    	            			 "  VAL:" 		+ rs.getInt("valor")
+	    	            			 );
+	    	             }
+	    			} catch (SQLException e) {
+	    				throw new PersistenceException(e);			
+	    			}
+	    	
+	    	     }
+	    	}
+	    }
 }
 

@@ -21,6 +21,7 @@ public class AluguelController extends HttpServlet {
     public AluguelController() {
     	 commandMap.put("/alugar", new AluguelQuarto());
     	 commandMap.put("/listar", new AluguelListar());
+    	 commandMap.put("/avaliar", new AluguelAvaliar());
     }
 
     @Override

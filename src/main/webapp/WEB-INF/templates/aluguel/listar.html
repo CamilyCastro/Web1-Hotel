@@ -3,22 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quartos Alugados</title>
-	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<!-- CSS --><link rel="stylesheet" th:href="@{/css/common.css}">
+	<!-- JavaScript <script th:src="@{/js/AluguelAvaliar.js}" defer></script> -->
 </head>
 <body>
 	<h1>Seus quartos alugados</h1>
 	
 	<table>
         <tr>
+        	<th>Código reserva</th>
             <th>Número do Quarto</th>
             <th>Data de Entrada</th>
             <th>Data de Saída</th>
+            <th>Deixe sua Avalição</th>
         </tr>
         
         <tr th:each="aluguel : ${alugueis}">
+        	<td th:text="${aluguel.id}"></td>
             <td th:text="${aluguel.idQuarto}"></td>
             <td th:text="${aluguel.entrada}"></td>
             <td th:text="${aluguel.saida}"></td>
+            <td>
+	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=2&quarto=${aluguel.id}|}">⭐</a></span>
+	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=4&quarto=${aluguel.id}|}">⭐</a></span>
+	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=6&quarto=${aluguel.id}|}">⭐</a></span>
+	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=8&quarto=${aluguel.id}|}">⭐</a></span>
+	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=10&quarto=${aluguel.id}|}">⭐</a></span>
+				<!-- <span class="operacao"> <a href="#" th:onclick="adicionarCarrinho(2, [[${aluguel.id}]]);">NOTA 2</a></span> -->
+			</td>
         </tr>
     </table>
 	

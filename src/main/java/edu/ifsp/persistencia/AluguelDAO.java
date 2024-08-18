@@ -27,11 +27,6 @@ public class AluguelDAO {
 
 	            insertPs.executeUpdate();
 	            conn.commit();
-//	            if (rowsAffected > 0) {
-//	                System.out.println("Aluguel registrado com sucesso.");
-//	            } else {
-//	                throw new SQLException("Falha ao registrar o aluguel.");
-//	            }
 	        }
 	    } catch (SQLException e) {
 	        throw new PersistenceException(e);
@@ -43,7 +38,7 @@ public class AluguelDAO {
 	    List<Aluguel> alugueis = new ArrayList<>();
 
 	    try (Connection conn = DatabaseConnector.getConnection()) {    
-	        String query = "SELECT entrada, saida, id_quarto, id_cliente " +
+	        String query = "SELECT id, entrada, saida, id_quarto, id_cliente " +
 	                       "FROM aluguel " +
 	                       "WHERE id_cliente = ?";
 
@@ -53,6 +48,7 @@ public class AluguelDAO {
 	            try (ResultSet rs = ps.executeQuery()) {
 	                while (rs.next()) {
 	                    Aluguel aluguel = new Aluguel();
+	                    aluguel.setId(rs.getInt("id"));
 	                    aluguel.setEntrada(rs.getString("entrada"));
 	                    aluguel.setSaida(rs.getString("saida"));
 	                    aluguel.setIdQuarto(rs.getInt("id_quarto"));
