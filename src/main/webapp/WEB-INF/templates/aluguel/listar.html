@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Quartos Alugados</title>
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>Seus quartos alugados</h1>
+	
+	<table>
+        <tr>
+            <th>Número do Quarto</th>
+            <th>Data de Entrada</th>
+            <th>Data de Saída</th>
+        </tr>
+        
+        <tr th:each="aluguel : ${alugueis}">
+            <td th:text="${aluguel.idQuarto}"></td>
+            <td th:text="${aluguel.entrada}"></td>
+            <td th:text="${aluguel.saida}"></td>
+        </tr>
+    </table>
+	
+</body>
+</html>
