@@ -26,6 +26,9 @@
     <p>
     	<a th:href="@{/quarto/favoritos}">Ver quartos favoritados</a>	
 	</p>
+	    <p>
+    	<a th:href="@{/aluguel/listar}">Ver quartos reservados</a>	
+	</p>
 
     <table>
         <tr>
@@ -44,6 +47,9 @@
             <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
             <td>
                 <span class="operacao"><a th:href="@{|/quarto/favoritar?quarto=${quarto.id}|}">Favoritar</a></span>
+            </td>
+            <td>
+                <span class="operacao"><a th:href="@{|/aluguel/alugar?quarto=${quarto.id}|}">Alugar</a></span>
             </td>
         </tr>
     </table>

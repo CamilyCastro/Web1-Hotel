@@ -23,9 +23,12 @@ public class ListarQuartos implements Command{
 		
 		int capacidade = Integer.parseInt(request.getParameter("capacidade"));
 		String entrada = request.getParameter("entrada");
+		String saida = request.getParameter("saida");
+
 		
 		HttpSession session = request.getSession();
         session.setAttribute("entrada", entrada);
+        session.setAttribute("saida", saida);
         session.setAttribute("capacidade", capacidade);
 		
 		quartos = dao.filtrar(entrada, capacidade);

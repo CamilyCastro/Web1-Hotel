@@ -47,9 +47,10 @@ public class FavoritarQuarto implements Command {
 
         // Recuperando a data de entrada e a capacidade da sessão
         String entrada = (String) session.getAttribute("entrada");
+        String saida   = (String) session.getAttribute("saida");
         Integer capacidade = (Integer) session.getAttribute("capacidade");
 
         // Passando os parâmetros na URL para manter o contexto
-        response.sendRedirect(request.getContextPath() + "/quarto/listar?entrada=" + entrada + "&capacidade=" + capacidade);
+		response.sendRedirect(request.getContextPath() + "/quarto/listar?entrada=" + entrada + "&saida=" + saida + "&capacidade=" + capacidade);
     }
 }
