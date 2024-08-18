@@ -21,6 +21,11 @@ public class DatabaseConnector {
         	 String dbPath = Paths.get("/hotelweb/src/main/resources").toAbsolutePath().toString();
         	 JDBC_URL = "jdbc:h2:file:" + dbPath;
              System.out.println("Banco de dados será salvo em: " + JDBC_URL);
+             
+             // Executa o script SQL para criar tabelas e inserir dados
+             executeSqlScript(getConnection(), "/schema.sql");
+             executeSqlScript(getConnection(), "/data.sql");
+             
         } catch (Exception e) {
             throw new IllegalStateException("Erro ao configurar o caminho do banco de dados.", e);
         }
@@ -37,10 +42,6 @@ public class DatabaseConnector {
 
         // Retorna uma conexão ao banco de dados
         Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
-        
-        // Executa o script SQL para criar tabelas e inserir dados
-        executeSqlScript(conn, "/schema.sql");
-        executeSqlScript(conn, "/data.sql");
         
         return conn;
     }
@@ -59,17 +60,19 @@ public class DatabaseConnector {
 
                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
              
-	            // Ler o script SQL do arquivo
-	            String sql = null;
-	            String line;
-	            while ((line = reader.readLine()) != null) {
-	            	sql = line + "/n"; 
-	            }
+            // Ler o script SQL do arquivo
+               StringBuilder sqlBuilder = new StringBuilder();
+               String line;
+               while ((line = reader.readLine()) != null) {
+                   sqlBuilder.append(line).append("\n");
+               }
+               String sql = sqlBuilder.toString();
 	
 	            // Executar o script SQL
 	            try (Statement stmt = conn.createStatement()) {
-	                stmt.execute(sql);
+	                stmt.execute(sql); 
 	            }
+	            
 	
 	        } catch (IllegalArgumentException e) {
 	            // Exceção para script SQL não encontrado

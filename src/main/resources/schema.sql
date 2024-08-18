@@ -24,6 +24,8 @@ create table aluguel (
 	entrada varchar(15) not null,
 	saida varchar(15) not null,
 	id_quarto int not null references quartos(id),
+	id_cliente int not null references cliente(id),
 	primary key (id)
 );
+
 
