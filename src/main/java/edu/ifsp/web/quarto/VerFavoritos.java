@@ -1,6 +1,5 @@
 package edu.ifsp.web.quarto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,12 +20,14 @@ public class VerFavoritos implements Command {
 		HttpSession session = request.getSession();
 		
 		// Recuperando a data de entrada e a capacidade da sessão
+		 List<Quarto> favoritos = (List<Quarto>) session.getAttribute("favoritos");
 		String entrada = (String) session.getAttribute("entrada");
 		Integer capacidade = (Integer) session.getAttribute("capacidade");
 	     
 		// Armazenando na requisição para ser usado no template, se necessário
 		request.setAttribute("entrada", entrada);
 		request.setAttribute("capacidade", capacidade);
+		request.setAttribute("favoritos", favoritos);
 				
 		// Renderizando o template de favoritos
 		Template.render("quarto/favoritos", request, response);

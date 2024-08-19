@@ -28,3 +28,4 @@ create table aluguel (
 	primary key (id)
 );
 
+

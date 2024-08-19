@@ -46,7 +46,7 @@ public class QuartosDAO {
 		return quartos;
 	}
 	
-	public Quarto listarFavoritados(int idQuarto) throws PersistenceException, ParseException, SQLException {	
+	public Quarto getQuarto(int idQuarto) throws PersistenceException, ParseException, SQLException {	
 		Quarto quarto = new Quarto();
 		try (Connection conn = DatabaseConnector.getConnection()) {	
 			

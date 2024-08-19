@@ -27,7 +27,7 @@ public class FavoritarQuarto implements Command {
         // Buscando o quarto que foi favoritado
         int quartoId = Integer.parseInt(request.getParameter("quarto"));
         QuartosDAO dao = new QuartosDAO();
-        Quarto quarto = dao.listarFavoritados(quartoId);
+        Quarto quarto = dao.getQuarto(quartoId);
         
         boolean encontrado = false;
         

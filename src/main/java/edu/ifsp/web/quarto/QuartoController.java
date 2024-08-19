@@ -20,6 +20,7 @@ public class QuartoController extends HttpServlet {
         commandMap.put("/listar", new ListarQuartos());
         commandMap.put("/favoritar", new FavoritarQuarto());
         commandMap.put("/favoritos", new VerFavoritos());
+        commandMap.put("/desfavoritar", new DesfavoritarQuarto());
     }
 
     @Override

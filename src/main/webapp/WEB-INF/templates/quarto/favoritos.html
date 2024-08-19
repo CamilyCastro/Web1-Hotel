@@ -9,6 +9,10 @@
 <body>
 	<h1>Seus quartos favoritos</h1>
 	
+	<div th:if="${session.favoritoMsg}">
+        <p th:text="${session.favoritoMsg}"></p>
+    </div>
+	
 	<table>
         <tr>
             <th>Número</th>
