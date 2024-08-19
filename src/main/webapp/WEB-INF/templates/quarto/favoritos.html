@@ -14,50 +14,22 @@
 	        <h1>Seja bem vindo</h1>
 	        <h2>Aqui voce encontra o conforto que precisa</h2>
 	
-<<<<<<< HEAD
-	<div th:if="${session.favoritoMsg}">
-        <p th:text="${session.favoritoMsg}"></p>
-    </div>
-	
-	<table>
-        <tr>
-            <th>Número</th>
-            <th>Descrição</th>
-            <th>Nota</th>
-            <th>Capacidade</th>    
-            <th>Valor</th>
-        </tr>
-        
-        <tr th:each="quarto, stats: ${session.favoritos}">
-            <td th:text="${quarto.id}"></td>
-            <td th:text="${quarto.descricao}"></td>
-            <td th:text="${quarto.nota}"></td>
-            <td th:text="${quarto.capacidade}"></td>
-            <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
-            <td>
-                <span class="operacao"><a th:href="@{|/quarto/desfavoritar?quarto=${quarto.id}|}">Desfavoritar</a></span>
-            </td>
-        </tr>
-    </table>
-=======
 	        <label for="entrada">Data entrada: </label>
-	        <input type="date" name="entrada" id="entrada" required>
->>>>>>> branch 'main' of https://github.com/CamilyCastro/Web1-Hotel.git
+	        <input type="date" name="entrada" id="entrada" required th:value="${entrada}">
 	
 	        <label for="saida">Data saida: </label>
-	        <input type="date" name="saida" id="saida" required><br><br>
+	        <input type="date" name="saida" id="saida" required th:value="${saida}"><br><br>
 	
 	        <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
 	        
 	        <label for="cap_um">Máximo uma pessoa:</label>
-	        <input type="radio"  id="capacidade" name="capacidade" value="1"><br>
-	
+	        <input type="radio" id="capacidade" name="capacidade" value="1" th:checked="${capacidade == 1}"><br>
+
 	        <label for="cap_dois">Máximo duas pessoas:</label>
-	        <input type="radio" id="capacidade" name="capacidade" value="2"><br>
+	        <input type="radio" id="capacidade" name="capacidade" value="2" th:checked="${capacidade == 2}"><br>
 	
 	        <label for="cap_tres">Máximo cinco pessoas:</label>
-	        <input type="radio" id="capacidade" name="capacidade" value="5" ><br><br>
-	        
+			<input type="radio" id="capacidade" name="capacidade" value="5" th:checked="${capacidade == 5}"><br>
 	        <button type="submit">Buscar</button>
 	    </form>
 	    
@@ -87,7 +59,7 @@
 	    </table>
 		
 		<ul>
-			<li><a th:href="@{/quarto/listar(entrada=${entrada}, capacidade=${capacidade})}">Voltar aos quartos disponíveis</a></li>
+			<li><a th:href="@{/quarto/listar(entrada=${entrada}, saida=${saida}, capacidade=${capacidade})}">Voltar</a></li>
 		</ul>
 	</div>
 	

@@ -21,11 +21,11 @@ public class ListarQuartos implements Command{
 		QuartosDAO dao = new QuartosDAO();
 		List<Quarto> quartos;
 		
+		//recupera dados da home
 		int capacidade = Integer.parseInt(request.getParameter("capacidade"));
 		String entrada = request.getParameter("entrada");
 		String saida = request.getParameter("saida");
-
-		
+	
 		HttpSession session = request.getSession();
         session.setAttribute("entrada", entrada);
         session.setAttribute("saida", saida);
@@ -33,7 +33,12 @@ public class ListarQuartos implements Command{
 		
 		quartos = dao.filtrar(entrada, capacidade);
 		request.setAttribute("quartos", quartos);
-	
+		
+		//persistencia do formulario
+		request.setAttribute("capacidade", capacidade);
+		request.setAttribute("entrada", entrada);
+		request.setAttribute("saida", saida);
+
 		Template.render("quarto/listar", request, response);		
 	}
 }

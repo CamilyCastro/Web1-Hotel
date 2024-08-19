@@ -30,6 +30,7 @@ public class VerFavoritos implements Command {
 		request.setAttribute("saida", saida);
 		request.setAttribute("capacidade", capacidade);
 		request.setAttribute("favoritos", favoritos);
+		
 				
 		// Renderizando o template de favoritos
 		Template.render("quarto/favoritos", request, response);
