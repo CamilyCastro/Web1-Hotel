@@ -22,10 +22,12 @@ public class VerFavoritos implements Command {
 		// Recuperando a data de entrada e a capacidade da sessão
 		 List<Quarto> favoritos = (List<Quarto>) session.getAttribute("favoritos");
 		String entrada = (String) session.getAttribute("entrada");
+		String saida = (String) session.getAttribute("saida");
 		Integer capacidade = (Integer) session.getAttribute("capacidade");
 	     
 		// Armazenando na requisição para ser usado no template, se necessário
 		request.setAttribute("entrada", entrada);
+		request.setAttribute("saida", saida);
 		request.setAttribute("capacidade", capacidade);
 		request.setAttribute("favoritos", favoritos);
 				

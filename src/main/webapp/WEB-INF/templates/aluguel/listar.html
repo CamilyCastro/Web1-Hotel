@@ -3,36 +3,65 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quartos Alugados</title>
-	<!-- CSS --><link rel="stylesheet" th:href="@{/css/common.css}">
-	<!-- JavaScript <script th:src="@{/js/AluguelAvaliar.js}" defer></script> -->
+	<!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/css_padrao.css}">
+	
 </head>
 <body>
-	<h1>Seus quartos alugados</h1>
+	<!-- formulario busca -->
+	<form method="post" action="/hotelweb/quarto/listar">
+	        <h1>Alvorada</h1>
+	        <h1>Seja bem vindo</h1>
+	        <h2>Aqui voce encontra o conforto que precisa</h2>
 	
-	<table>
-        <tr>
-        	<th>Código reserva</th>
-            <th>Número do Quarto</th>
-            <th>Data de Entrada</th>
-            <th>Data de Saída</th>
-            <th>Deixe sua Avalição</th>
-        </tr>
-        
-        <tr th:each="aluguel : ${alugueis}">
-        	<td th:text="${aluguel.id}"></td>
-            <td th:text="${aluguel.idQuarto}"></td>
-            <td th:text="${aluguel.entrada}"></td>
-            <td th:text="${aluguel.saida}"></td>
-            <td>
-	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=2&quarto=${aluguel.id}|}">⭐</a></span>
-	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=4&quarto=${aluguel.id}|}">⭐</a></span>
-	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=6&quarto=${aluguel.id}|}">⭐</a></span>
-	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=8&quarto=${aluguel.id}|}">⭐</a></span>
-	        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=10&quarto=${aluguel.id}|}">⭐</a></span>
-				<!-- <span class="operacao"> <a href="#" th:onclick="adicionarCarrinho(2, [[${aluguel.id}]]);">NOTA 2</a></span> -->
-			</td>
-        </tr>
-    </table>
+	        <label for="entrada">Data entrada: </label>
+	        <input type="text" name="entrada" id="entrada" required>
+	
+	        <label for="saida">Data saida: </label>
+	        <input type="text" name="saida" id="saida" required><br><br>
+	
+	        <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
+	        
+	        <label for="cap_um">Máximo uma pessoa:</label>
+	        <input type="radio"  id="capacidade" name="capacidade" value="1"><br>
+	
+	        <label for="cap_dois">Máximo duas pessoas:</label>
+	        <input type="radio" id="capacidade" name="capacidade" value="2"><br>
+	
+	        <label for="cap_tres">Máximo cinco pessoas:</label>
+	        <input type="radio" id="capacidade" name="capacidade" value="5" ><br><br>
+	        
+	        <button type="submit">Buscar</button>
+	    </form>
+	    
+	<!-- aluguel/listar -->
+	<div class="box">
+		<h1>Seus quartos alugados</h1>
+		
+		<table>
+	        <tr>
+	        	<th>Código reserva</th>
+	            <th>Número do Quarto</th>
+	            <th>Data de Entrada</th>
+	            <th>Data de Saída</th>
+	            <th>Deixe sua Avalição</th>
+	        </tr>
+	        
+	        <tr th:each="aluguel : ${alugueis}">
+	        	<td th:text="${aluguel.id}"></td>
+	            <td th:text="${aluguel.idQuarto}"></td>
+	            <td th:text="${aluguel.entrada}"></td>
+	            <td th:text="${aluguel.saida}"></td>
+	            <td>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=2&quarto=${aluguel.id}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=4&quarto=${aluguel.id}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=6&quarto=${aluguel.id}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=8&quarto=${aluguel.id}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=10&quarto=${aluguel.id}|}">⭐</a></span>
+				</td>
+	        </tr>
+	    </table>
+    </div>
 	
 </body>
 </html>
