@@ -1,0 +1,180 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif; /* Fonte padrão como Arial */
+    background-color: #f4f4f4; /* Cor de fundo da página */
+
+    background-image: url('../imagens/home_fundo.jpg'); /* Adiciona uma imagem de fundo da mesma pasta */
+    background-size: cover; /* Faz a imagem cobrir todo o fundo */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-position: center; /* Centraliza a imagem no fundo */
+
+    color: #474747; /* Define a cor do texto */
+
+    height: 100%; /* Define a altura do body como 100% da altura da janela de visualização */
+	display: flex; /* Configura o layout flexível para o corpo */
+    margin: 0;/*EXTERIOR*/
+    padding: 0;/*INTERIOR*/
+    justify-content: left; /* POSIÇÃO HORIZONTAL */
+    align-items: top; /*POSIÇÃO VERTICAL */
+}
+
+/* Estilização do formulário */
+form {
+    background-color: #fff;
+    margin: 1%;/*EXTERIOR*/
+    padding: 1%;/*INTERIOR*/
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);/*Sombra*/
+    width: 20%;/*LARGURA*/
+}
+
+.box {
+    background-color: #fff;
+    margin: 1%;/*EXTERIOR*/
+    padding: 1%;/*INTERIOR*/
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 76%;
+    height: 10%;
+    border: 1px solid #ddd; 
+}
+
+
+h1, h2 {
+    /* Centraliza o texto dos cabeçalhos */
+    text-align: center;
+
+    /* Define o espaçamento inferior dos cabeçalhos */
+    margin-bottom: 20px;
+
+}
+
+label {
+    /* Exibe o rótulo como um bloco (ocupa a largura total) */
+    display: block;
+
+    /* Define o espaçamento inferior do rótulo */
+    margin-bottom: 10px;
+
+    /* Define o texto do rótulo como negrito */
+    font-weight: bold;
+}
+
+input[type="text"], input[type="radio"], input[type="date"] {
+    /* Define o espaçamento inferior dos campos de entrada */
+    margin-bottom: 15px;
+
+    /* Define o espaçamento interno dos campos de entrada */
+    padding: 5px;
+
+    /* Define a largura dos campos de entrada como 100% do contêiner */
+    width: 100%;
+
+    /* Ajusta o box model para incluir padding e borda na largura total */
+    box-sizing: border-box;
+
+    /* Define a borda dos campos de entrada */
+    border: 1px solid #ccc;
+
+    /* Define cantos arredondados para os campos de entrada */
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    /* Redefine a largura dos botões de rádio para o valor automático */
+    width: auto;
+}
+
+button {
+    /* Define a cor de fundo do botão */
+    background-color: #1392c4;
+
+    /* Define a cor do texto do botão */
+    color: #fff;
+
+    /* Remove a borda padrão do botão */
+    border: none;
+
+    /* Define o espaçamento interno do botão */
+    padding: 10px 15px;
+
+    /* Define cantos arredondados para o botão */
+    border-radius: 3px;
+
+    /* Define o cursor como ponteiro ao passar sobre o botão */
+    cursor: pointer;
+
+    /* Define a largura do botão como 100% do contêiner */
+    width: 100%;
+
+    /* Define o tamanho da fonte do botão */
+    font-size: 16px;
+}
+
+button:hover {
+    /* Define a cor de fundo do botão ao passar o mouse */
+    background-color: #1392c4;
+}
+
+/* Estilos adicionais */
+form label[for="capacidade"] {
+    /* Define o peso da fonte como normal para o rótulo com id "capacidade" */
+    font-weight: normal;
+}
+
+form label[for^="cap_"] {
+    /* Define o peso da fonte como normal para rótulos cujo atributo "for" começa com "cap_" */
+    font-weight: normal;
+
+    /* Exibe o rótulo como um elemento inline */
+    display: inline;
+}
+
+/*************************************************************************************  TABELA  *************************************************************************************/
+/* Estilos gerais para tabelas */
+table {
+    /* Define a largura da tabela como 100% do contêiner */
+    width: 100%;
+    
+    /* Define o espaçamento interno das células */
+    border-collapse: collapse; /* Remove o espaçamento entre bordas das células */
+
+    /* Define o espaçamento interno da tabela */
+    margin: 20px 0; /* Adiciona margem superior e inferior */
+}
+
+/* Estilização das células da tabela */
+th, td {
+    /* Define o espaçamento interno das células */
+    padding: 10px;
+    
+    /* Define a borda das células */
+    border: 1px solid #ddd;
+    
+    /* Define o alinhamento do texto nas células */
+    text-align: left;
+}
+
+/* Estilização das células de cabeçalho */
+th {
+    /* Define a cor de fundo dos cabeçalhos */
+    background-color: #f4f4f4;
+
+    /* Define a cor do texto dos cabeçalhos */
+    color: #474747;
+
+    /* Define a fonte como negrito */
+    font-weight: bold;
+}
+
+/* Estilização das linhas da tabela */
+tr:nth-child(even) {
+    /* Define a cor de fundo das linhas pares */
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    /* Define a cor de fundo ao passar o mouse sobre uma linha */
+    background-color: #e0e0e0;
+}
+

@@ -3,35 +3,66 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Favoritos Alvorada</title>
-	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/css_padrao.css}">
 	
 </head>
 <body>
-	<h1>Seus quartos favoritos</h1>
+	<!-- formulario busca -->
+	<form method="post" action="/hotelweb/quarto/listar">
+	        <h1>Alvorada</h1>
+	        <h1>Seja bem vindo</h1>
+	        <h2>Aqui voce encontra o conforto que precisa</h2>
 	
-	<table>
-        <tr>
-            <th>Número</th>
-            <th>Descrição</th>
-            <th>Nota</th>
-            <th>Capacidade</th>    
-            <th>Valor</th>
-        </tr>
-        
-        <tr th:each="quarto, stats: ${session.favoritos}">
-            <td th:text="${quarto.id}"></td>
-            <td th:text="${quarto.descricao}"></td>
-            <td th:text="${quarto.nota}"></td>
-            <td th:text="${quarto.capacidade}"></td>
-            <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
-            <td>
-                <span class="operacao"><a th:href="@{|/quarto/desfavoritar?quarto=${quarto.id}|}">Desfavoritar</a></span>
-            </td>
-        </tr>
-    </table>
+	        <label for="entrada">Data entrada: </label>
+	        <input type="text" name="entrada" id="entrada" required>
 	
-	<ul>
-		<li><a th:href="@{/quarto/listar(entrada=${entrada}, capacidade=${capacidade})}">Voltar aos quartos disponíveis</a></li>
-	</ul>
+	        <label for="saida">Data saida: </label>
+	        <input type="text" name="saida" id="saida" required><br><br>
+	
+	        <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
+	        
+	        <label for="cap_um">Máximo uma pessoa:</label>
+	        <input type="radio"  id="capacidade" name="capacidade" value="1"><br>
+	
+	        <label for="cap_dois">Máximo duas pessoas:</label>
+	        <input type="radio" id="capacidade" name="capacidade" value="2"><br>
+	
+	        <label for="cap_tres">Máximo cinco pessoas:</label>
+	        <input type="radio" id="capacidade" name="capacidade" value="5" ><br><br>
+	        
+	        <button type="submit">Buscar</button>
+	    </form>
+	    
+	<!-- quarto/favoritos -->
+	<div class="box">
+		<h1>Seus quartos favoritos</h1>
+		
+		<table>
+	        <tr>
+	            <th>Número</th>
+	            <th>Descrição</th>
+	            <th>Nota</th>
+	            <th>Capacidade</th>    
+	            <th>Valor</th>
+	        </tr>
+	        
+	        <tr th:each="quarto, stats: ${session.favoritos}">
+	            <td th:text="${quarto.id}"></td>
+	            <td th:text="${quarto.descricao}"></td>
+	            <td th:text="${quarto.nota}"></td>
+	            <td th:text="${quarto.capacidade}"></td>
+	            <td th:text="${#numbers.formatCurrency(quarto.valor)}" class="monetario"></td>
+	            <td>
+	                <span class="operacao"><a th:href="@{|/quarto/desfavoritar?quarto=${quarto.id}|}">Desfavoritar</a></span>
+	            </td>
+	        </tr>
+	    </table>
+		
+		<ul>
+			<li><a th:href="@{/quarto/listar(entrada=${entrada}, capacidade=${capacidade})}">Voltar aos quartos disponíveis</a></li>
+		</ul>
+	</div>
+	
 </body>
 </html>

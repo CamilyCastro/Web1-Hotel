@@ -4,18 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/css_padrao.css}">
+	<!-- JS -->
+	<!-- <script th:src="@{/js/home.js}"></script> -->
+	<!-- <script th:inline="javascript"></script> -->
+
     <title>Home Hotel Alvorada</title>
 </head>
 <body>
-    <form method="post" action="quarto/listar">
-        <h1>Seja bem vindo ao Alvorada</h1>
+<form method="post" action="/hotelweb/quarto/listar">
+<!-- 	<form onsubmit="handleSubmit(event)"> -->
+        <h1>Alvorada</h1>
+        <h1>Seja bem vindo</h1>
         <h2>Aqui voce encontra o conforto que precisa</h2>
 
         <label for="entrada">Data entrada: </label>
-        <input type="text" name="entrada" id="entrada" required>
+        <input type="date" name="entrada" id="entrada" required>
 
         <label for="saida">Data saida: </label>
-        <input type="text" name="saida" id="saida" required><br><br>
+        <input type="date" name="saida" id="saida" required><br><br>
 
         <label for="capacidade">Capacidade máxima de pessoas por quarto:</label><br>
         
@@ -30,5 +39,10 @@
         
         <button type="submit">Buscar</button>
     </form>
-</body>
+
+<!-- Conteúdo do box -->
+<!-- <div class="box"> -->
+<!-- <p>BOX EXEMPLO</p> -->
+<!-- </div> -->
+    
 </html>
