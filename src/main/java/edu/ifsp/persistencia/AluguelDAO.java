@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,35 @@ public class AluguelDAO {
 	    } catch (SQLException e) {
 	        throw new PersistenceException(e);
 	    }
+	}
+
+	
+	public List<Aluguel> filtrarAluguel() throws PersistenceException {
+		List<Aluguel> alugueis = new ArrayList<>();
+
+
+		try (Connection conn = DatabaseConnector.getConnection()) {
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT id, entrada, saida, id_quarto, id_cliente " +
+						   	   "FROM aluguel;");
+			
+			while (rs.next()) {
+				Aluguel aluguel = new Aluguel();
+				aluguel.setId(rs.getInt("id"));
+				aluguel.setEntrada(rs.getString("entrada"));
+				aluguel.setSaida(rs.getString("saida"));
+				aluguel.setIdQuarto(rs.getInt("id_quarto"));
+				aluguel.setIdCliente(rs.getInt("id_cliente"));
+
+				alugueis.add(aluguel);
+			}	
+		} catch (SQLException e) {
+			throw new PersistenceException(e);			
+		}
+
+		return alugueis;
 	}
 
 	

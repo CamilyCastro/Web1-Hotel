@@ -11,20 +11,17 @@ import edu.ifsp.modelo.Quarto;
 
 public class QuartosDAO {
 	
-	public List<Quarto> filtrar(String entrada, int capacidade) throws PersistenceException, ParseException {	
+	public List<Quarto> filtrar(int capacidade) throws PersistenceException, ParseException {	
 		List<Quarto> quartos = new ArrayList<Quarto>();
 		
 		try (Connection conn = DatabaseConnector.getConnection()) {	
 
-			String query = "SELECT q.id, q.descricao, q.nota, q.capacidade, q.valor " +
-                    "FROM quartos q " +
-                    "LEFT JOIN aluguel a ON q.id = a.id_quarto " +
-                    "WHERE (a.saida IS NULL OR a.saida < ?) " +
-                    "AND q.capacidade = ?";
+			String query = "SELECT id, descricao, nota, capacidade, valor " +
+                    "FROM quartos " +
+                    "WHERE capacidade = ?";
 
 		     try (PreparedStatement ps = conn.prepareStatement(query)) {
-		         ps.setString(1, entrada);
-		         ps.setInt(2, capacidade);
+		         ps.setInt(1, capacidade);
 		         
 		         try (ResultSet rs = ps.executeQuery()) {
 		             while (rs.next()) {
@@ -45,6 +42,7 @@ public class QuartosDAO {
 
 		return quartos;
 	}
+
 	
 	public Quarto getQuarto(int idQuarto) throws PersistenceException, ParseException, SQLException {	
 		Quarto quarto = new Quarto();
