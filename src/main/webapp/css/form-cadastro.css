@@ -1,0 +1,113 @@
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('../imagens/home_fundo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #474747;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background-color: #fff;
+    margin: 1%; /*EXTERIOR*/
+    padding: 1%; /*INTERIOR*/
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /*Sombra*/
+    width: 50%; /*LARGURA*/
+    max-width: 600px; /* Largura máxima para não esticar muito em telas grandes */
+}
+
+.box {
+    background-color: #fff;
+    margin: 1%;/*EXTERIOR*/
+    padding: 1%;/*INTERIOR*/
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 76%;
+    height: 10%;
+    border: 1px solid #ddd; 
+}
+
+
+h1, h2 {
+    /* Centraliza o texto dos cabeçalhos */
+    text-align: center;
+
+    /* Define o espaçamento inferior dos cabeçalhos */
+    margin-bottom: 20px;
+
+}
+
+label {
+    /* Exibe o rótulo como um bloco (ocupa a largura total) */
+    display: block;
+
+    /* Define o espaçamento inferior do rótulo */
+    margin-bottom: 10px;
+
+    /* Define o texto do rótulo como negrito */
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    /* Define o espaçamento inferior dos campos de entrada */
+    margin-bottom: 15px;
+
+    /* Define o espaçamento interno dos campos de entrada */
+    padding: 5px;
+
+    /* Define a largura dos campos de entrada como 100% do contêiner */
+    width: 100%;
+
+    /* Ajusta o box model para incluir padding e borda na largura total */
+    box-sizing: border-box;
+
+    /* Define a borda dos campos de entrada */
+    border: 1px solid #ccc;
+
+    /* Define cantos arredondados para os campos de entrada */
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    /* Redefine a largura dos botões de rádio para o valor automático */
+    width: auto;
+}
+
+/* Estilos gerais para todos os botões */
+button {
+    background-color: #1392c4; /* Cor de fundo padrão dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    border: none; /* Remove a borda padrão dos botões */
+    padding: 10px 15px; /* Define o espaçamento interno dos botões */
+    border-radius: 3px; /* Define cantos arredondados para os botões */
+    cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o botão */
+    width: 100%; /* Define a largura dos botões como 100% do contêiner */
+    font-size: 16px; /* Define o tamanho da fonte dos botões */
+}
+
+button:hover {
+    background-color: #117a8b; /* Cor de fundo ao passar o mouse */
+}
+
+
+/* Estilos adicionais */
+form label[for="capacidade"] {
+    /* Define o peso da fonte como normal para o rótulo com id "capacidade" */
+    font-weight: normal;
+}
+
+form label[for^="cap_"] {
+    /* Define o peso da fonte como normal para rótulos cujo atributo "for" começa com "cap_" */
+    font-weight: normal;
+
+    /* Exibe o rótulo como um elemento inline */
+    display: inline;
+}

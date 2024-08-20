@@ -1,9 +1,17 @@
 package edu.ifsp.modelo;
 
 public class Cliente {
+	int id;
 	String nome;
 	String email;
 	String password;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
