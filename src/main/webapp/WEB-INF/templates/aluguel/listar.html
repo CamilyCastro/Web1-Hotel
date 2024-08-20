@@ -43,6 +43,7 @@
 	            <th>Número do Quarto</th>
 	            <th>Data de Entrada</th>
 	            <th>Data de Saída</th>
+	            <th>Cancelar</th>
 	            <th>Deixe sua Avalição</th>
 	        </tr>
 	        
@@ -52,11 +53,27 @@
 	            <td th:text="${aluguel.entrada}"></td>
 	            <td th:text="${aluguel.saida}"></td>
 	            <td>
-		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=2&quarto=${aluguel.id}|}">⭐</a></span>
-		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=4&quarto=${aluguel.id}|}">⭐</a></span>
-		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=6&quarto=${aluguel.id}|}">⭐</a></span>
-		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=8&quarto=${aluguel.id}|}">⭐</a></span>
-		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=10&quarto=${aluguel.id}|}">⭐</a></span>
+					<form th:action="@{/aluguel/cancelar}" method="post" style="display: inline;">
+						<input type="hidden" name="bt-cancelar" th:value="${aluguel.id}" />
+						<button type="submit"
+								   style="background-color: #dc3545; /* Cor vermelha para o botão */ 
+								   color: #fff; /* Cor do texto */ 
+								   border: none; /* Remove a borda padrão */ 
+								   padding: 8px 16px; /* Ajuste do espaçamento interno */ 
+								   border-radius: 4px; /* Canto arredondado */ 
+								   cursor: pointer; /* Cursor como ponteiro ao passar sobre o botão */ 
+								   font-size: 14px; /* Tamanho da fonte */ 
+								   transition: background-color 0.3s ease;">
+								   ✖️
+						</button>
+					</form>
+				</td>
+	            <td>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=2&quarto=${aluguel.idQuarto}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=4&quarto=${aluguel.idQuarto}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=6&quarto=${aluguel.idQuarto}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=8&quarto=${aluguel.idQuarto}|}">⭐</a></span>
+		        	<span class="operacao"><a th:href="@{|/aluguel/avaliar?nota=10&quarto=${aluguel.idQuarto}|}">⭐</a></span>
 				</td>
 	        </tr>
 	    </table>

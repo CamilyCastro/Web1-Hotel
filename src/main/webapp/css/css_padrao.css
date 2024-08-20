@@ -85,36 +85,22 @@ input[type="radio"] {
     width: auto;
 }
 
+/* Estilos gerais para todos os botões */
 button {
-    /* Define a cor de fundo do botão */
-    background-color: #1392c4;
-
-    /* Define a cor do texto do botão */
-    color: #fff;
-
-    /* Remove a borda padrão do botão */
-    border: none;
-
-    /* Define o espaçamento interno do botão */
-    padding: 10px 15px;
-
-    /* Define cantos arredondados para o botão */
-    border-radius: 3px;
-
-    /* Define o cursor como ponteiro ao passar sobre o botão */
-    cursor: pointer;
-
-    /* Define a largura do botão como 100% do contêiner */
-    width: 100%;
-
-    /* Define o tamanho da fonte do botão */
-    font-size: 16px;
+    background-color: #1392c4; /* Cor de fundo padrão dos botões */
+    color: #fff; /* Cor do texto dos botões */
+    border: none; /* Remove a borda padrão dos botões */
+    padding: 10px 15px; /* Define o espaçamento interno dos botões */
+    border-radius: 3px; /* Define cantos arredondados para os botões */
+    cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o botão */
+    width: 100%; /* Define a largura dos botões como 100% do contêiner */
+    font-size: 16px; /* Define o tamanho da fonte dos botões */
 }
 
 button:hover {
-    /* Define a cor de fundo do botão ao passar o mouse */
-    background-color: #1392c4;
+    background-color: #117a8b; /* Cor de fundo ao passar o mouse */
 }
+
 
 /* Estilos adicionais */
 form label[for="capacidade"] {

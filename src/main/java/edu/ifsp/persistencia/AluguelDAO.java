@@ -65,5 +65,24 @@ public class AluguelDAO {
 	    return alugueis;
 	}
 	
+	public void deleteReserva(int id) throws PersistenceException {
+	    String query = "DELETE FROM aluguel WHERE id = ?";
+
+	    try (Connection conn = DatabaseConnector.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(query)) {
+
+	        ps.setInt(1, id);
+
+	        int affectedRows = ps.executeUpdate();
+	        if (affectedRows == 0) {
+	            throw new PersistenceException("Nenhuma reserva encontrada com o ID: " + id);
+	        }
+
+	    } catch (SQLException e) {
+	        throw new PersistenceException(e);
+	    }
+	}
+
+	
 }
 
