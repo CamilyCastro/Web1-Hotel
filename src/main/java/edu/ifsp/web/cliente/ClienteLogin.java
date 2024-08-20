@@ -18,9 +18,8 @@ import edu.ifsp.web.templates.Template;
 public class ClienteLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	        // Redireciona para home
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        Template.render("cliente/login", request, response);
 	}
 
@@ -35,15 +34,19 @@ public class ClienteLogin extends HttpServlet {
 				Cliente cliente =  dao.validateCliente(email, password);
 				
 				if(cliente != null) {
+					request.setAttribute("msgErro", "");
 					HttpSession session = request.getSession();
 					session.setAttribute("id_logado", cliente.getId());
 
 					// Redireciona para home
 					response.sendRedirect(request.getContextPath() + "/home");
+				}else {
+					request.setAttribute("msgErro", "Email e/ou senha incorretos !!");
+					doGet(request, response);
+					
 				}
 				
-				
-				
+							
 			} catch (PersistenceException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
