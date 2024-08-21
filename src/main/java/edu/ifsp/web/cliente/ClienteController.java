@@ -19,6 +19,7 @@ public class ClienteController extends HttpServlet {
     public ClienteController() {
         commandMap.put("/cadastro", new CadastrarCliente());
         commandMap.put("/login", new LoginCliente());
+        commandMap.put("/logout", new LoginCliente());
     }
 
     @Override
