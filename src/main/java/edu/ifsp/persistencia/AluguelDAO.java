@@ -18,7 +18,6 @@ public class AluguelDAO {
 
 	    try (Connection conn = DatabaseConnector.getConnection()) {
 
-	        // Inserir dados na tabela aluguel
 	        String insertQuery = "INSERT INTO aluguel (entrada, saida, id_quarto, id_cliente) VALUES (?, ?, ?, ?)";
 	        try (PreparedStatement insertPs = conn.prepareStatement(insertQuery)) {
 	            insertPs.setString(1, entrada);

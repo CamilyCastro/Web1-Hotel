@@ -17,7 +17,6 @@ public class CadastrarCliente implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		// Recupera dados do formulário de cadastro
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -31,25 +30,20 @@ public class CadastrarCliente implements Command{
 			
 			ClienteDAO dao = new ClienteDAO();	
 
-			// Cria um objeto Cliente com os dados recebidos
 			Cliente cliente = new Cliente();
 			cliente.setNome(nome);
 			cliente.setEmail(email);
 			cliente.setPassword(password);
 
-			// Insere o cliente no banco de dados
 			try {
 				dao.insertCliente(cliente);
 
-				// Armazena informações na sessão(loga o cliente)
 				int id = dao.validateCliente(email, password).getId();	
 				HttpSession session = request.getSession();
 				session.setAttribute("id_logado", id);
 
-				// Redireciona para home
 				response.sendRedirect(request.getContextPath() + "/home");
 			} catch (PersistenceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}			
 		}

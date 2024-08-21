@@ -27,7 +27,6 @@ public class ListarQuartos implements Command{
 		List<Aluguel> alugueis;
 		List<Quarto> quartos;
 		
-		//recupera dados da home
 		int capacidade = Integer.parseInt(request.getParameter("capacidade"));
 		String entrada = request.getParameter("entrada");
 		String saida = request.getParameter("saida");
@@ -44,7 +43,6 @@ public class ListarQuartos implements Command{
 		listaFinal = getDisponiveis(quartos, alugueis, entrada, saida);
 		request.setAttribute("quartos", listaFinal);
 				
-		//persistencia do formulario
 		request.setAttribute("capacidade", capacidade);
 		request.setAttribute("entrada", entrada);
 		request.setAttribute("saida", saida);
@@ -63,20 +61,17 @@ public class ListarQuartos implements Command{
 	        boolean isDisponivel = true;
 
 	        for (Aluguel aluguel : alugueis) {
-	            // Verifica se o aluguel é do mesmo quarto
 	            if (quarto.getId() == aluguel.getIdQuarto()) {
 	                Date entradaBanco = formato.parse(aluguel.getEntrada());
 	                Date saidaBanco = formato.parse(aluguel.getSaida());
 
-	                // Verifica se há colisão nas datas (sobreposição)
 	                if (!(saidaChegando.before(entradaBanco) || entradaChegando.after(saidaBanco))) {
 	                    isDisponivel = false;
-	                    break; // Se houver colisão, podemos parar de verificar este quarto
+	                    break; 
 	                }
 	            }
 	        }
 
-	        // Se o quarto não teve colisão de datas, ele é adicionado à lista de disponíveis
 	        if (isDisponivel) {
 	            disponiveis.add(quarto);
 	        }

@@ -15,7 +15,7 @@ public class AluguelListar implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//recuperando da sessão
+
     	HttpSession session = request.getSession();
 		String entrada = (String) session.getAttribute("entrada");
 		String saida = (String) session.getAttribute("saida");
@@ -27,14 +27,12 @@ public class AluguelListar implements Command {
 			List alugueis = aluguel.getListaAlugueis(id_logado);
 			request.setAttribute("alugueis", alugueis);
 			
-			//persistencia do formulario
 			request.setAttribute("capacidade", capacidade);
 			request.setAttribute("entrada", entrada);
 			request.setAttribute("saida", saida);
 			
 			Template.render("aluguel/listar", request, response);		
 		}else {
-			//MSG DE ERRO		
 			response.sendRedirect(request.getContextPath() + "/cliente/login");
 		}
 

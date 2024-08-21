@@ -18,12 +18,10 @@ public class LoginCliente implements Command{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    ClienteDAO dao = new ClienteDAO();
 
-	    // Recupera dados do formulário de login
 	    String email = request.getParameter("email");
 	    String password = request.getParameter("password");
 
 	    if (email == null || password == null) {
-	        // Primeira vez acessando a página de login, sem tentativa de login
 	        request.setAttribute("msgErro", "");
 	        Template.render("cliente/login", request, response);
 	    } else {
@@ -34,7 +32,6 @@ public class LoginCliente implements Command{
 	                HttpSession session = request.getSession();
 	                session.setAttribute("id_logado", cliente.getId());
 
-	                // Redireciona para home
 	                response.sendRedirect(request.getContextPath() + "/home");
 	            } else {
 	                request.setAttribute("msgErro", "Email e/ou senha incorretos !!");
