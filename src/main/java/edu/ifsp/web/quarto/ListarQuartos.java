@@ -19,9 +19,7 @@ import edu.ifsp.web.templates.Template;
 
 public class ListarQuartos implements Command{
 	
-	public ListarQuartos() {
-		
-	}
+	public ListarQuartos() {}
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		QuartosDAO dao = new QuartosDAO();

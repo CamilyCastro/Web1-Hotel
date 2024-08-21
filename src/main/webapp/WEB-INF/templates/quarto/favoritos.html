@@ -35,6 +35,11 @@
 	    
 	<!-- quarto/favoritos -->
 	<div class="box">
+	
+		<div th:if="${session.desfavoritoMsg}">
+	        <p th:text="${session.desfavoritoMsg}"></p>
+	    </div> 
+	    
 		<h1>Seus quartos favoritos</h1>
 		
 		<table>

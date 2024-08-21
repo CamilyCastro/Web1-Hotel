@@ -39,9 +39,9 @@ public class DesfavoritarQuarto implements Command{
 
 	        if (encontrado) {
 	        	session.setAttribute("favoritos", favoritos);
-	            session.setAttribute("favoritoMsg", "Quarto removido da lista de favoritos.");
+	            session.setAttribute("desfavoritoMsg", "Quarto removido da lista de favoritos.");
 	        } else {
-	            session.setAttribute("favoritoMsg", "Quarto não encontrado na lista de favoritos");
+	            session.setAttribute("desfavoritoMsg", "Quarto não encontrado na lista de favoritos");
 	        }
 
 	        // Recuperando a data de entrada e a capacidade da sessão
