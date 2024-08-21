@@ -2,6 +2,7 @@ package edu.ifsp.web.aluguel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.ifsp.persistencia.QuartosDAO;
 import edu.ifsp.web.Command;
@@ -16,6 +17,8 @@ public class AluguelAvaliar implements Command {
 		QuartosDAO quartos = new QuartosDAO();
 		quartos.updateNota(nota, quarto);
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("alugadoMsg", "Quarto avaliado! Muito obrigado!");
 		response.sendRedirect(request.getContextPath() + "/aluguel/listar");
 	}
 }

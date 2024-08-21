@@ -36,7 +36,7 @@
 	<!-- quarto/favoritos -->
 	<div class="box">
 	
-		<div th:if="${session.desfavoritoMsg}">
+		<div th:if="${session.desfavoritoMsg}"  id="desfavoritoMsg">
 	        <p th:text="${session.desfavoritoMsg}"></p>
 	    </div> 
 	    
@@ -67,6 +67,15 @@
 			<li><a th:href="@{/quarto/listar(entrada=${entrada}, saida=${saida}, capacidade=${capacidade})}">Voltar</a></li>
 		</ul>
 	</div>
+	
+	<script>
+	    setTimeout(function() {
+	        var msgElement = document.getElementById("desfavoritoMsg");
+	        if (msgElement) {
+	            msgElement.style.display = "none"; 
+	        }
+	    }, 3000); 
+	</script>
 	
 </body>
 </html>

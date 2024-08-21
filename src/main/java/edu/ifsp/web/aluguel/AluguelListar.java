@@ -34,8 +34,7 @@ public class AluguelListar implements Command {
 			
 			Template.render("aluguel/listar", request, response);		
 		}else {
-			//MSG DE ERRO
-			
+			//MSG DE ERRO		
 			response.sendRedirect(request.getContextPath() + "/cliente/login");
 		}
 

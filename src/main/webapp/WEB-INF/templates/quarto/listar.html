@@ -47,7 +47,7 @@
 	<div class="box">
 	    <h1>Quartos</h1>
 	
-	    <div th:if="${session.favoritoMsg}">
+	    <div th:if="${session.favoritoMsg}" id="favoritoMsg">
 	        <p th:text="${session.favoritoMsg}"></p>
 	    </div>
 	    
@@ -85,6 +85,15 @@
 			<li><a th:href="@{/home}">Voltar</a></li>
 		</ul>
 	</div>
+	
+	<script>
+	    setTimeout(function() {
+	        var msgElement = document.getElementById("favoritoMsg");
+	        if (msgElement) {
+	            msgElement.style.display = "none"; 
+	        }
+	    }, 3000); 
+	</script>
 
 </body>
 </html>

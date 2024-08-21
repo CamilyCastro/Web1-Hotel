@@ -26,6 +26,7 @@ public class AluguelQuarto implements Command {
 			aluguel.insertAluguel(entrada, saida, quartoId, id_logado);
 
 			//retorna para '/quarto/listar' utilizando os parametros da primeira busca
+			session.setAttribute("favoritoMsg", "Quarto adicionado a lista de reservas.");
 			response.sendRedirect(request.getContextPath() + "/quarto/listar?entrada=" + entrada + "&saida=" + saida + "&capacidade=" + capacidade);
 
 		} catch (Exception e) {
