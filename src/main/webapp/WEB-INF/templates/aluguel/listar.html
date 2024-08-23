@@ -60,13 +60,13 @@
 					<form th:action="@{/aluguel/cancelar}" method="post" style="display: inline;">
 						<input type="hidden" name="bt-cancelar" th:value="${aluguel.id}" />
 						<button type="submit"
-								   style="background-color: #dc3545; /* Cor vermelha para o botão */ 
-								   color: #fff; /* Cor do texto */ 
-								   border: none; /* Remove a borda padrão */ 
-								   padding: 8px 16px; /* Ajuste do espaçamento interno */ 
-								   border-radius: 4px; /* Canto arredondado */ 
-								   cursor: pointer; /* Cursor como ponteiro ao passar sobre o botão */ 
-								   font-size: 14px; /* Tamanho da fonte */ 
+								   style="background-color: #dc3545; 
+								   color: #fff; 
+								   border: none; 
+								   padding: 8px 16px;  
+								   border-radius: 4px; 
+								   cursor: pointer;  
+								   font-size: 14px;  
 								   transition: background-color 0.3s ease;">
 								   ✖️
 						</button>
@@ -86,15 +86,6 @@
 			<li><a th:href="@{/quarto/listar(entrada=${entrada}, saida=${saida}, capacidade=${capacidade})}">Voltar</a></li>
 		</ul>
     </div>
-    
-    <script>
-	    setTimeout(function() {
-	        var msgElement = document.getElementById("alugadoMsg");
-	        if (msgElement) {
-	            msgElement.style.display = "none"; 
-	        }
-	    }, 3000); 
-	</script>
 	
 </body>
 </html>

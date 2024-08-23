@@ -89,26 +89,6 @@ public class QuartosDAO {
 	        	throw new PersistenceException(e);	
 	        }
 	        
-	    	/**          TESTEE          **/
-	    	try (Connection conn = DatabaseConnector.getConnection()) {	
-	    		String query2 = "SELECT id, descricao, nota, capacidade, valor FROM quartos";      
-	    	     try (PreparedStatement ps = conn.prepareStatement(query2)) {
-	                
-	    	         try (ResultSet rs = ps.executeQuery()) {
-	    	             while (rs.next()) {
-	    	            	 System.out.println(
-	    	            			 "  ID QUARTO:" + rs.getInt("id")+
-	    	            			 "  NOTA:"  	+ rs.getInt("nota")+
-	    	            			 "  CAP:" 		+ rs.getInt("capacidade")+
-	    	            			 "  VAL:" 		+ rs.getInt("valor")
-	    	            			 );
-	    	             }
-	    			} catch (SQLException e) {
-	    				throw new PersistenceException(e);			
-	    			}
-	    	
-	    	     }
-	    	}
-	    }
+	}
 }
 

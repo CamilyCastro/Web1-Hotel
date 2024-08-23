@@ -11,7 +11,7 @@ import edu.ifsp.web.Command;
 
 public class FavoritarQuarto implements Command {
 
-    public FavoritarQuarto() {}
+    public FavoritarQuarto() {}	
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -35,18 +35,21 @@ public class FavoritarQuarto implements Command {
                 break; 
             }
         }
-
+        
+        String mensagem = null;
+        
         if (encontrado) {
-            session.setAttribute("favoritoMsg", "Quarto já está nos favoritos.");
+            mensagem = "Quarto já está nos favoritos.";
         } else {
             favoritos.add(quarto);
-            session.setAttribute("favoritoMsg", "Quarto favoritado com sucesso.");
+           mensagem = "Quarto favoritado com sucesso.";
         }
-
-        String entrada = (String) session.getAttribute("entrada");
-        String saida   = (String) session.getAttribute("saida");
-        Integer capacidade = (Integer) session.getAttribute("capacidade");
-
-		response.sendRedirect(request.getContextPath() + "/quarto/listar?entrada=" + entrada + "&saida=" + saida + "&capacidade=" + capacidade);
+        
+        //session.setAttribute("favoritoMsg", mensagem);
+        
+        response.setContentType("text/plain");
+        response.getWriter().write(mensagem);
+        System.out.println("Mensagem enviada: " + mensagem);
     }
+
 }

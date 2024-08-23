@@ -35,20 +35,17 @@ public class DesfavoritarQuarto implements Command{
 	        	break;
 	        }
 
+	        String mensagem = null;
+	        
 	        if (encontrado) {
 	        	session.setAttribute("favoritos", favoritos);
-	            session.setAttribute("desfavoritoMsg", "Quarto removido da lista de favoritos.");
+	        	mensagem = "Quarto removido da lista de favoritos.";
 	        } else {
-	            session.setAttribute("desfavoritoMsg", "Quarto não encontrado na lista de favoritos");
+	        	mensagem = "Quarto não encontrado na lista de favoritos";
 	        }
 
-	        String entrada = (String) session.getAttribute("entrada");
-	        String saida   = (String) session.getAttribute("saida");
-	        Integer capacidade = (Integer) session.getAttribute("capacidade");
-	        
-	        response.sendRedirect(request.getContextPath() + "/quarto/favoritos?entrada=" + entrada + "&saida=" + saida + "&capacidade=" + capacidade);
-		
+	        response.setContentType("text/plain");
+	        response.getWriter().write(mensagem);
+	        System.out.println("Mensagem enviada: " + mensagem);	   
 	}
-	
-	
 }
